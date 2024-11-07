@@ -9,7 +9,7 @@ import ultralytics
 app = Flask(__name__)
 
 # MongoDB 클라이언트 설정
-client = MongoClient('mongodb+srv://21928296:n9Dx8ngcU2pD0lyj@database.2vxog.mongodb.net/?retryWrites=true&w=majority&appName=database')
+client = MongoClient('Mongo DB 연결 Key')
 db = client['database']
 collection = db['myCollection']
 
