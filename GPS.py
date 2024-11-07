@@ -3,17 +3,15 @@ import geocoder
 
 def get_GPS():
     # 네이버 클라우드 플랫폼에서 발급받은 API 키 입력
-    client_id = 'ecr1lhz9yb'
-    client_secret = '2A5HEaJZNendKtooBAbe6JA0qxBV9bGhTN6qxA3j'
+    client_id = '네이버 API ID'
+    client_secret = '네이버 API Secret Number'
     # IP 기반으로 대략적인 현재 위치의 위도, 경도 가져오기
     g = geocoder.ip('me')
     
 
     # 현재 위치의 위도, 경도 출력
     if g.ok:
-        latitude, longitude = g.latlng
-        latitude = 35.8997267
-        longitude = 128.8549113
+        latitude, longitude = g.latlng # IP주소 관련 수정 필요
         print(f"현재 위치의 위도: {latitude}, 경도: {longitude}")
     else:
         print("현재 위치의 GPS 좌표를 가져올 수 없습니다.")
