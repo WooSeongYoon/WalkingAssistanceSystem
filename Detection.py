@@ -7,7 +7,7 @@ import DB
 import GPS
 
 ser = serial.Serial("/dev/ttyAMA0", 115200)
-model = ultralytics.YOLO('./best.pt')
+model = ultralytics.YOLO('./BaseModel/11S_E100_1.0Ver/weights/best.pt')
 
 classTxt = open('./classes.txt', 'r')
 data = classTxt.read()
