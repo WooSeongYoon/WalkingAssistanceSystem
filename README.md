@@ -7,7 +7,7 @@
 
 ## 설계 및 구현
 1. 시제품 구성도 및 기능
-![image](https://github.com/user-attachments/assets/bfa87a82-478a-4bbf-9d70-c966c4f026c1)
+![image](https://github.com/user-attachments/assets/bfa87a82-478a-4bbf-9d70-c966c4f026c1)   
 ![image](https://github.com/user-attachments/assets/08fad504-6cd6-45bc-a381-83666fd2e22b)
 보행 보조 임베디드 시스템은 라즈베리파이5를 기반으로 2D 라이다, GPS 모듈, 웹캠을 통합하여 시각장애인의 안전한 보행을 지원하는 시스템입니다.
 ![image](https://github.com/user-attachments/assets/2ebb2bdd-0efa-42cc-9e0a-706fc2ba0a5d)
