@@ -57,3 +57,5 @@ MongoDB에서 저장한 데이터를 웹페이지를 통해 표시하고, flask�
  - 2024.08.01. | [대구대학교 교육혁신원] Learning SIG+ 우수상(총장상)
  - 2024.11.24. | [대구대학교 정보통신연구소] 졸업 논문 작성
  - 2024.12.12. | [대구대학교 Linc3.0] 캡스톤디자인 최우수상
+
+![image](https://github.com/user-attachments/assets/3c0d1857-fa48-4968-bd2c-f246fd49de83)
