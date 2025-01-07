@@ -2,7 +2,7 @@
 시각장애인을 위한 "보행 보조 시스템"   
 ![image](https://github.com/user-attachments/assets/63f36dcb-033f-451d-95aa-a3b020f79597)   
 ## 요약
-<div align="center">
+<div align="img">
   ![image](https://github.com/user-attachments/assets/87c86be0-85e6-45d5-b138-8849ec4f4f7a)
 </div>
 
