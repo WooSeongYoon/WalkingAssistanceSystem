@@ -2,15 +2,17 @@
 시각장애인을 위한 "보행 보조 시스템"
 
 ## 개요
-국민권익위원회의 자료에 따르면 1,257건(44.2%)의 점자블록 파손･훼손의 민원이 들어 왔다. 또한 킥보드, 자전거 등 위험 물체로 인해 다치는 사례가 꾸준히 발생하고 있는 것을 기사와 보고서 등으로 확인하였습니다.   
+2024년 기준 대한민국에는 여러 가지 시각장애인 보조가 이루어지고 있지만, 여전히 보도 환경에서 킥보드, 손상된 점자블록 등으로 인해 안전한 보행에 어려움을 겪고 있는 현실입니다. 국민권익위원회의 자료에 따르면 1,257건(44.2%)의 점자블록 파손･훼손의 민원이 들어 왔습니다. 또한 킥보드, 자전거 등 위험 물체로 인해 다치는 사례가 꾸준히 발생하고 있는 것을 기사와 보고서 등으로 확인하였습니다.   
 이를 통해 관리가 되지 않은 점자블록과 위험 물체로 인하여 교통약자들이 몇 년 동안 어려움을 겪고 있다. 이를 해결하고자 해당 프로그램을 개발하게 되었습니다.
 
 ## 설계 및 구현
 1. 시제품 구성도 및 기능
-![image](https://github.com/user-attachments/assets/ccbdb5be-e570-423a-96ff-2e6f29f2320e)
+![image](https://github.com/user-attachments/assets/bfa87a82-478a-4bbf-9d70-c966c4f026c1)
+![image](https://github.com/user-attachments/assets/08fad504-6cd6-45bc-a381-83666fd2e22b)
+보행 보조 임베디드 시스템은 라즈베리파이5를 기반으로 2D 라이다, GPS 모듈, 웹캠을 통합하여 시각장애인의 안전한 보행을 지원하는 시스템입니다.
 ![image](https://github.com/user-attachments/assets/2ebb2bdd-0efa-42cc-9e0a-706fc2ba0a5d)
 
-2. Yolov11
+3. Yolov11
 ![image](https://github.com/user-attachments/assets/0a22d4a0-b563-48b3-96ef-d744923732ce)
 
 ## 기대효과
