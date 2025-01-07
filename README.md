@@ -1,5 +1,5 @@
 # WalkingAssistanceSystem
-시각장애인을 위한 "보행 보조 시스템"
+시각장애인을 위한 "보행 보조 시스템"   
 ![image](https://github.com/user-attachments/assets/63f36dcb-033f-451d-95aa-a3b020f79597)
 
 ## 개요
