@@ -33,7 +33,7 @@ MongoDB 클라우드 데이터베이스는 인터넷 가상환경에서 실행�
 해당DB는 상기의 표와 같이 학습한 YOLOv11s 모델이 인식한 파손된 객체데이터와, GPS 모듈의 현재 위도 & 경도 값 및 인식한 사진의 BSON 데이터를 저장하고 해당하는 데이터를 지도 웹페이지에서 로딩 할 수있도록 구성하였습니다.
 
 7. 웹 페이지
-![image](https://github.com/user-attachments/assets/70bffb51-f562-4fc8-baa8-b4dee4d9a663)   
+   ![image](https://github.com/user-attachments/assets/70bffb51-f562-4fc8-baa8-b4dee4d9a663)   
 MongoDB에서 저장한 데이터를 웹페이지를 통해 표시하고, flask를 통해 웹을 호스팅하여 언제 어디서나 접근할 수 있도록 설정하고, 불러온 위도, 경도값을 네이버 cloud platform의 지도에서 표시할 수 있도록 처리하였습니다.
 
 ## 기대효과
