@@ -5,10 +5,16 @@
 국민권익위원회의 자료에 따르면 1,257건(44.2%)의 점자블록 파손･훼손의 민원이 들어 왔다. 또한 킥보드, 자전거 등 위험 물체로 인해 다치는 사례가 꾸준히 발생하고 있는 것을 기사와 보고서 등으로 확인하였습니다.   
 이를 통해 관리가 되지 않은 점자블록과 위험 물체로 인하여 교통약자들이 몇 년 동안 어려움을 겪고 있다. 이를 해결하고자 해당 프로그램을 개발하게 되었습니다.
 
-## 기능
-![image](https://github.com/user-attachments/assets/577f38bf-1a44-456e-8498-05b5dd7bd844)
+## 설계 및 구현
+1. 시제품 구성도 및 기능
+![image](https://github.com/user-attachments/assets/ccbdb5be-e570-423a-96ff-2e6f29f2320e)
+![image](https://github.com/user-attachments/assets/2ebb2bdd-0efa-42cc-9e0a-706fc2ba0a5d)
+
+2. Yolov11
+![image](https://github.com/user-attachments/assets/0a22d4a0-b563-48b3-96ef-d744923732ce)
 
 ## 기대효과
+![image](https://github.com/user-attachments/assets/9648c29c-5836-4e1f-837a-b53f0882eb5e)
 
 ## 성과
  - 2024.04.17. | [대구대학교 창업지원단] 창업동아리 선정
