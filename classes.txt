@@ -1,5 +1,6 @@
 Kickboard
 Bollard
+Broken Bollard
 Crosswlk
 Green Pedestirian Light
 Red Pedestrian Light
