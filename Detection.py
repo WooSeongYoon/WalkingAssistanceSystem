@@ -42,13 +42,11 @@ def videoDetection(cap, model, class_list, ser, MIN_ACC, MAX_DISTANCE):
             label = class_list[int(data[5])]
             
             if (distance is not None):
-
-                text = (f"전방에 {distance} 앞에 무엇인가 있습니다.")
-                os.system(f'espeak "{text}"')
-
-
                 if ((label == "Kickboard") or (label == "Bollard")):
                     text = (f"전방 {distance}앞에 {label}가 있습니다.")
+                    os.system(f'espeak "{text}"')
+                else:
+                    text = (f"전방에 {distance} 앞에 무엇인가 있습니다.")
                     os.system(f'espeak "{text}"')
             
 
@@ -72,6 +70,18 @@ def videoDetection(cap, model, class_list, ser, MIN_ACC, MAX_DISTANCE):
                 
             elif (label == "Braille Sidewalk Blocks"):
                 damage = False
+                img = './saved_image.jpg'
+                cv2.imwrite(img, frame)
+                DB.DB_insert(GPS.get_GPS()[2], GPS.get_GPS()[3], label, img, GPS.get_GPS()[0], damage)
+
+            elif (label == "Bollard"):
+                damage = False
+                img = './saved_image.jpg'
+                cv2.imwrite(img, frame)
+                DB.DB_insert(GPS.get_GPS()[2], GPS.get_GPS()[3], label, img, GPS.get_GPS()[0], damage)
+
+            elif (label == "Broken Bollard"):
+                damage = True
                 img = './saved_image.jpg'
                 cv2.imwrite(img, frame)
                 DB.DB_insert(GPS.get_GPS()[2], GPS.get_GPS()[3], label, img, GPS.get_GPS()[0], damage)
