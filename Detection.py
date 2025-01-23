@@ -57,17 +57,9 @@ def videoDetection(cap, model, class_list, ser, MIN_ACC, MAX_DISTANCE):
                 os.system(f'espeak "{text}"')
 
             elif (label == "Crosswlk"):
-                if (label == "Green Pedestirian Light"):
-                    text = "초록불입니다."
-                    os.system(f'espeak "{text}"')
-                    print("초록불입니다.")
-                elif (label == "Red Pedestrian Light"):
-                    text = "빨간불입니다."
-                    os.system(f'espeak "{text}"')
-                    print("빨간불입니다.")
-                else:
-                    text = ("전방에 횡단보도가 있습니다.")
-                    os.system(f'espeak "{text}"')
+                cross = True
+                text = ("전방에 횡단보도가 있습니다.")
+                os.system(f'espeak "{text}"')
 
             elif (label == "Broken Braille Sidewalk Blocks"):
                 damage = True
@@ -83,6 +75,16 @@ def videoDetection(cap, model, class_list, ser, MIN_ACC, MAX_DISTANCE):
                 img = './saved_image.jpg'
                 cv2.imwrite(img, frame)
                 DB.DB_insert(GPS.get_GPS()[2], GPS.get_GPS()[3], label, img, GPS.get_GPS()[0], damage)
+            
+            if (cross == True):
+                if (label == "Green Pedestirian Light"):
+                    text = "초록불입니다."
+                    os.system(f'espeak "{text}"')
+                    print("초록불입니다.")
+                elif (label == "Red Pedestrian Light"):
+                    text = "빨간불입니다."
+                    os.system(f'espeak "{text}"')
+                    print("빨간불입니다.")
 
                 print("정상임")
 
