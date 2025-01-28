@@ -9,17 +9,17 @@
 
 ## 설계 및 구현
 1. 시제품 구성도 및 기능
-![image](https://github.com/user-attachments/assets/24bacd0c-8189-4e64-8735-2ea03c2fa515)   
+<img src="https://github.com/user-attachments/assets/24bacd0c-8189-4e64-8735-2ea03c2fa515" width="500" height="250"/>   
 ![image](https://github.com/user-attachments/assets/bcafb25c-322a-4df8-94c8-8aa9a75d55bb)   
 보행 보조 임베디드 시스템은 라즈베리파이5를 기반으로 2D 라이다, GPS 모듈, 웹캠을 통합하여 시각장애인의 안전한 보행을 지원하는 시스템입니다.   
 ![image](https://github.com/user-attachments/assets/2ebb2bdd-0efa-42cc-9e0a-706fc2ba0a5d)   
 
-2. 2D 라이다 센서   
+3. 2D 라이다 센서   
 ![image](https://github.com/user-attachments/assets/f8ac56ab-b473-4604-a634-4719003baeac)   
 본 시스템에 사용한 그림3의 TFmini Plus 라이다는 TOF(Time of Flight, 비행 시간) 원리를 기반으로 작동하며 구체적으로는 정해진 시간마다 변조된 근적외선을 방출하고 반사된 빛의 왕복 위상 차이를 파악하여 비행시간을 측정합니다.   
 장애물과의 거리 측정을 통해 1m 이내에 있는 객체를 탐지하기 위해 사용하였습니다. 시스템이 작동하는 그 순간의 거리 측정한 값을 나타내는 방식을 사용하였습니다. 이러한 방식으로 라즈베리파이 5로 특정 거리에 있는 객체를 인식할 수 있습니다.
 
-3. Yolov11
+4. Yolov11
 ![image](https://github.com/user-attachments/assets/aeab5ced-1d8c-45f7-a309-7b61e2eeda40)   
  1차로는 YOLOv11에는 Train, Valid, Test 데이터셋이 사용되고 총 33,225장이 사용되었다. 훈련은 640*640 이미지로 100 Epoch을 진행하였습니다. batch를 –1로 지정하여 60% GPU 메모리 사용률로 자동 설정했습니다. 정확도가 2개의 모델 모두 1에서 10 Epoch에서 큰 변화를 보였습니다. s모델과 x모델의 훈련에 걸린 시간은 각각 약 2시간과 약 46시간이 걸렸습니다. 정확도는 mAP50기준으로 각각 80.6%, 82.1%으로 약 2%의 차이를 보였습니다. 실시간 동영상으로 테스트를 진행하였습니다. s 모델은 40fps 정도의 속도로 진행되었고 x 모델은 10fps 정도의 속도로 진행되었습니다.    
 정확도가 낮은 파손된 점자 보도블록을 약 2,000장 추가하여 2차 학습을 진행하였습니다. 모델은 YOLOv11s모델을 사용하였습니다. mAP50 기준으로 정확도가 81.4%를 측정되었습니다.   
