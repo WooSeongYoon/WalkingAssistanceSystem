@@ -10,10 +10,9 @@
 ## 설계 및 구현
 1. 시제품 구성도 및 기능
 <img src="https://github.com/user-attachments/assets/24bacd0c-8189-4e64-8735-2ea03c2fa515" width="400" height="300"/>    
-<img src="https://github.com/user-attachments/assets/bcafb25c-322a-4df8-94c8-8aa9a75d55bb" width="400" height="300"/>
-
-보행 보조 임베디드 시스템은 라즈베리파이5를 기반으로 2D 라이다, GPS 모듈, 웹캠을 통합하여 시각장애인의 안전한 보행을 지원하는 시스템입니다.    
+<img src="https://github.com/user-attachments/assets/bcafb25c-322a-4df8-94c8-8aa9a75d55bb" width="400" height="300"/>   
 <img src="https://github.com/user-attachments/assets/2ebb2bdd-0efa-42cc-9e0a-706fc2ba0a5d" width="500" height="300"/>     
+보행 보조 임베디드 시스템은 라즈베리파이5를 기반으로 2D 라이다, GPS 모듈, 웹캠을 통합하여 시각장애인의 안전한 보행을 지원하는 시스템입니다.   
 
 3. 2D 라이다 센서   
 ![image](https://github.com/user-attachments/assets/f8ac56ab-b473-4604-a634-4719003baeac)   
