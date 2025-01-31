@@ -1,0 +1,9 @@
+Kickboard
+Bollard
+Crosswlk
+Green Pedestirian Light
+Red Pedestrian Light
+Stairs
+Braille Sidewalk Blocks
+Broken Braille Sidewalk Blocks
+Broken Bollard
