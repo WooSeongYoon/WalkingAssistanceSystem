@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파손 상태 확인 결과</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <img src="{{ url_for('static', filename='uploads/' + result_image) }}" alt="결과 이미지" style="max-width: 500px;">
+    <h2>상태: {{ repair_status }}</h2>
+    <a href="/upload_broken_image">다시 업로드하기</a>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.W.S.</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ecr1lhz9yb"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: row;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #map {
+            top: 30px;
+            width: 50%;
+            height: 800px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+        }
+        /* 오른쪽에 나타날 팝업 창 스타일 */
+        #popup {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            width: 500px;
+            height: 800px;
+            border-radius: 10px;
+            background-color: #fff;
+            display: none; /* 처음에는 숨김 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        iframe {
+            width: 100%;
+            height: calc(100% - 40px); /* 버튼을 제외한 나머지 공간 */
+            border: none;
+            border-radius: 0 0 10px 10px;
+        }
+        /* 닫기 버튼 스타일 */
+        #closeBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #6200ea; /* 머터리얼 디자인 기본 색상 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        #closeBtn:hover {
+            background-color: #3700b3; /* hover 효과 */
+            transform: scale(1.05); /* 클릭 효과 */
+        }
+        h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+            padding: 10px;
+        }
+        p {
+            color: #555;
+            padding: 0 10px 10px;
+        }
+
+        /* 화면 크기가 1024px 이하일 때 팝업을 지도 아래로 이동 */
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column; /* 세로 정렬로 변경 */
+            }
+            #map {
+                width: 100%; /* 지도 너비를 100%로 조정 */
+                height: 50vh; /* 지도의 높이를 절반으로 */
+            }
+            #popup {
+                position: relative;
+                width: 100%;
+                height: 50vh; /* 팝업 높이를 지도의 높이에 맞춤 */
+                top: 0;
+                right: 0;
+                display: none; /* 처음에는 숨김 */
+                margin-top: 10px; /* 지도와의 여백 추가 */
+            }
+        }
+
+        /* 화면 크기가 768px 이하일 때 */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column; /* 세로 정렬로 변경 */
+            }
+            #map {
+                width: 100%;
+                height: 40vh; /* 지도의 높이를 더 줄임 */
+            }
+            #popup {
+                width: 100%;
+                height: 50vh;
+                top: 0;
+                right: 0;
+                margin-top: 10px;
+            }
+        }
+
+        /* 화면 크기가 480px 이하일 때 */
+        @media (max-width: 480px) {
+            #map {
+                width: 100%;
+                height: 30vh; /* 지도의 높이를 더 줄임 */
+            }
+            #popup {
+                width: 100%;
+                height: 50vh;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+    <!-- 오른쪽 팝업 창 -->
+    <div id="popup">
+        <!-- 닫기 버튼 -->
+        <button id="closeBtn">닫기</button>
+        <iframe id="popupFrame" src=""></iframe>
+    </div>
+
+    <script>
+        var mapOptions = {
+            center: new naver.maps.LatLng(35.902802, 128.849103), // 지도의 중심 위치
+            zoom: 16
+        };
+
+        var map = new naver.maps.Map('map', mapOptions);
+
+        // 팝업창과 iframe, 닫기 버튼 참조
+        var popup = document.getElementById('popup');
+        var popupFrame = document.getElementById('popupFrame');
+        var closeBtn = document.getElementById('closeBtn');
+
+        // 닫기 버튼 클릭 시 팝업 닫기
+        closeBtn.addEventListener('click', function() {
+            popup.style.display = 'none'; // 팝업 숨기기
+        });
+
+        // 서버에서 데이터를 주기적으로 받아오는 함수
+        function fetchMarkers() {
+    fetch('/get_marker_data')  // Flask 서버에서 마커 데이터를 가져오는 경로
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(markerData => {
+                var markerColor = markerData.status === 'Braille Sidewalk Blocks' ? 'green' : 'red';  // 상태에 따른 색상
+                var marker = new naver.maps.Marker({
+                    position: new naver.maps.LatLng(markerData.lat, markerData.lng),
+                    map: map,
+                    icon: {
+                        content: `<div style="background-color: ${markerColor}; width: 20px; height: 20px; border-radius: 50%;"></div>`,  // 마커를 원형으로 표시
+                        anchor: new naver.maps.Point(10, 10)  // 마커 크기 맞춤
+                    }
+                });
+
+                // 마커 클릭 시 이벤트 핸들러 추가
+                naver.maps.Event.addListener(marker, 'click', function() {
+                    // 팝업에 클릭된 마커의 정보를 보여주도록 설정
+                    const imageSrc = markerData.image || '';  // Base64 문자열
+                    popupFrame.srcdoc = `
+                        <div style="padding: 10px;">
+                            <h3>보도블럭 정보</h3>
+                            <img src="${imageSrc}" alt="파손 이미지" style="width: 100%; height: 300px;" />
+                            <h1>신고 일시: ${markerData.date}</h1>
+                            <p>위치: ${markerData.loc}</p>
+                            <p>상태: ${markerData.status}</p>
+                        </div>
+                    `;
+                    popup.style.display = 'block';  // 팝업 표시
+                });
+            });
+        })
+        .catch(error => console.log('Error fetching marker data:', error));
+}
+
+// 10초마다 데이터 갱신
+setInterval(fetchMarkers, 10000);
+
+// 처음에도 한 번 실행
+fetchMarkers();
+
+</script>
+
+</body>
+</html>
